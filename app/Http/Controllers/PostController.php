@@ -69,9 +69,4 @@ class PostController extends Controller
 
         return redirect()->route('one_post', $id)->with('success', 'Публикация обновлена');
     }
-
-    public function add_comment($comment)
-    {
-        echo($comment);
-    }
 }
