@@ -2,32 +2,46 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/posts', 'App\Http\Controllers\PostController@allData')
+    ->name('posts');
 
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
+Route::get('/', 'App\Http\Controllers\PostController@allData')
+    ->name('posts');
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+Route::get('/make_post', 'App\Http\Controllers\PostController@make_post')
+    ->name('make_post');
 
-Route::post('/contact/submit', 'App\Http\Controllers\ContactController@submit')
-    ->name('contact-form');
+Route::post('/make_post/submit', 'App\Http\Controllers\PostController@submit_post')
+    ->name('submit_post');
 
-Route::get('/contact/all', 'App\Http\Controllers\ContactController@allData')
-    ->name('contact-data');
+Route::get('/posts/{id}', 'App\Http\Controllers\PostController@one_post')
+    ->name('one_post');
 
-Route::get('/contact/all/{id}', 'App\Http\Controllers\ContactController@showOneMessage')
-    ->name('contact-data-one');
+Route::get('/one_post/{id}/delete', 'App\Http\Controllers\PostController@delete_post')
+    ->name('delete_post');
 
-Route::get('/contact/all/{id}/update', 'App\Http\Controllers\ContactController@updateMessage')
-    ->name('contact-update');
+Route::get('/one_post/{id}/edit', 'App\Http\Controllers\PostController@edit_post')
+    ->name('edit_post');
 
-Route::post('/contact/all/{id}/update', 'App\Http\Controllers\ContactController@updateMessageSubmit')
-    ->name('contact-update-submit');
+Route::post('/one_post/{id}/edit/submit', 'App\Http\Controllers\PostController@edit_post_submit')
+    ->name('edit_post_submit');
 
-Route::get('/contact/all/{id}/delete', 'App\Http\Controllers\ContactController@deleteMessage')
-    ->name('contact-delete');
+Route::post('/one_post/{id}/add_coment', 'App\Http\Controllers\CommentController@add_comment')
+    ->name('add_comment');
+
+Route::get('/categories', 'App\Http\Controllers\CategoryController@all_categories')
+    ->name('categories');
+
+Route::post('/categories/submit', 'App\Http\Controllers\CategoryController@add_category')
+    ->name('add_category');
+
+Route::get('/categories/{id}/delete', 'App\Http\Controllers\CategoryController@delete_category')
+    ->name('delete_category');
+
+Route::post('/categories/{id}/edit', 'App\Http\Controllers\CategoryController@edit_category')
+    ->name('edit_category');
+
+Route::get('/categories/{id}/single_category', 'App\Http\Controllers\CategoryController@single_category')
+    ->name('single_category');
+
+
