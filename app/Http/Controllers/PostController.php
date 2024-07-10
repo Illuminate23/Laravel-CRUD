@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Category;
 use DB;
 
 class PostController extends Controller
@@ -22,7 +23,7 @@ class PostController extends Controller
         $post = new Post();
         $post->name = $req->input('name');
         $post->email = $req->input('email');
-        $post->category = $req->input('category');
+        $post->category_id = $req->input('category_id');
         $post->subject = $req->input('subject');
         $post->message = $req->input('message');
 
@@ -33,8 +34,8 @@ class PostController extends Controller
 
     public function make_post()
     {
-        $post = DB::select('select name from categories');
-        return view('make_post',['data' => $post]);
+        $categories = Category::all();
+        return view('make_post',['data' => $categories]);
     }
 
     public function one_post($id)
@@ -53,7 +54,7 @@ class PostController extends Controller
     public function edit_post($id)
     {
         $post = new Post;
-        return view('edit_post', ['data' => $post->find($id)], ['bd' =>  DB::select('select name from categories')]);
+        return view('edit_post', ['data' => $post->find($id)], ['bd' =>  Category::all()]);
     }
 
     public function edit_post_submit($id, PostRequest $req)
@@ -61,7 +62,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->name = $req->input('name');
         $post->email = $req->input('email');
-        $post->category = $req->input('category');
+        $post->category_id = $req->input('category_id');
         $post->subject = $req->input('subject');
         $post->message = $req->input('message');
 

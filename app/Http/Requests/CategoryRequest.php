@@ -22,13 +22,13 @@ class CategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
+            'new_category' => 'required',
         ];
     }
     public function messages()
     {
         return [
-            'name.required' => 'Поле имя является обязательным',
+            'new_category.required' => 'Поле имя является обязательным',
         ];
     }
 }

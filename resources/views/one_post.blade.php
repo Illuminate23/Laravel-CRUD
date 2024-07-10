@@ -7,7 +7,7 @@
 @section('content')
     <div class="alert alert-primary">
         <h1>{{$data->subject}}</h1>
-        <p>{{$data->category}}</p>
+        <p>{{$data->category_id}}</p>
         <p><small>Автор: {{$data->name}} | Email: {{$data->email}}</small></p>
         <p><small>{{ $data->created_at }}</small></p>
     </div>

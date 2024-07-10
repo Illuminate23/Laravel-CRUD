@@ -34,7 +34,7 @@ class CategoryController extends Controller
     public function edit_category($id, CategoryRequest $req)
     {
         $category = Category::find($id);
-        $category->name  = $req->input('name');
+        $category->name  = $req->input('new_category');
 
         $category->save();
 

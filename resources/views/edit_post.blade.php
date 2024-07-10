@@ -17,10 +17,10 @@
             <input type="text" name="email" placeholder="Введите email" id="email" class="form-control" value="{{$data->email}}">
         </div>
         <div class="form-group">
-            <label for="category">Категория публикации</label>
-            <select class="custom-select" id="category" name="category">
+            <label for="category_id">Категория публикации</label>
+            <select class="custom-select" id="category_id" name="category_id">
                 @foreach($bd as $el)
-                    <option>{{$el->name}}</option>
+                    <option value="{{$el->id}}">{{$el->name}}</option>
                 @endforeach
             </select>
         </div>

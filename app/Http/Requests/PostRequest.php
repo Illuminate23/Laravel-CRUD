@@ -24,7 +24,7 @@ class PostRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required',
-            'category' => 'required',
+            'category_id' => 'required',
             'subject' => 'required',
             'message' => 'required',
         ];
@@ -36,7 +36,7 @@ class PostRequest extends FormRequest
         return [
             'name.required' => 'Поле имя является обязательным',
             'email.required' => 'Поле email является обязательным',
-            'category.required' => 'Поле category является обязательным',
+            'category_id.required' => 'Поле category является обязательным',
             'subject.required' => 'Поле subject  является обязательным',
             'message.required' => 'Поле message является обязательным',
         ];
